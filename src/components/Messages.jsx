@@ -3,7 +3,9 @@ import { Fragment } from 'react'
 export function Messages() {
     return (
         <Fragment>
-            <h1>Messages</h1>
+            <div className="main_messages">
+
+            </div>
         </Fragment>
     )
 }

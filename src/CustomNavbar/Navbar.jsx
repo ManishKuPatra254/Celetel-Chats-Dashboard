@@ -5,6 +5,7 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import main_logo from '../assets/main_logo.svg';
 import { Link } from "react-router-dom";
+import { BsFillChatSquareFill } from "react-icons/bs";
 
 export function Navbar() {
     const [isSidebar, setSidebar] = useState(false);
@@ -38,9 +39,12 @@ export function Navbar() {
                         }}>
                             <Link to={'/chats'} onClick={handleCloseSidebar} style={{
                                 textDecoration: 'none',
+                                display: "flex",
+                                alignItems: "center",
+                                gap: "15px",
                                 color: 'inherit',
                                 fontWeight: "600",
-                            }}>Chats</Link>
+                            }}><BsFillChatSquareFill /> Chats</Link>
                         </ListItem>
                         <ListItem sx={{
                             backgroundColor: '#F6F5F2',
