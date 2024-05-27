@@ -17,3 +17,15 @@
   text-decoration: none;
   font-family: "Poppins", sans-serif;
 }
+
+.main_nav {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  padding: 15px;
+  background-color: #E0FBE2;
+}
+
+.drawer_img {
+  width: 30%;
+}
