@@ -37,7 +37,7 @@ export function Navbar() {
                                 backgroundColor: '#E0E0E0'
                             }
                         }}>
-                            <Link to={'/chats'} onClick={handleCloseSidebar} style={{
+                            <Link to={'/'} onClick={handleCloseSidebar} style={{
                                 textDecoration: 'none',
                                 display: "flex",
                                 alignItems: "center",
