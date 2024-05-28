@@ -1,7 +1,10 @@
 import { Fragment, useState } from 'react';
+import { IoLink } from "react-icons/io5";
+import { IoMdSend } from "react-icons/io";
 
 export function Chats() {
     const [selectedChat, setSelectedChat] = useState(null);
+    const [inputMessage, setInputMessage] = useState("");
 
     const chatData = [
         {
@@ -54,6 +57,40 @@ export function Chats() {
         },
     ];
 
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            if (selectedChat && inputMessage.trim() !== "") {
+                // eslint-disable-next-line no-unused-vars
+                const newChatData = chatData.map(chat => {
+                    if (chat.name === selectedChat.name) {
+                        return {
+                            ...chat,
+                            messages: [...chat.messages, inputMessage]
+                        };
+                    }
+                    return chat;
+                });
+
+                setSelectedChat({
+                    ...selectedChat,
+                    messages: [...selectedChat.messages, inputMessage]
+                });
+                setInputMessage("");
+            }
+        }
+    };
+
+    const handleFileUpload = (event) => {
+        const file = event.target.files[0];
+        if (file && selectedChat) {
+            const newMessage = `File: ${file.name}`;
+            setSelectedChat({
+                ...selectedChat,
+                messages: [...selectedChat.messages, newMessage]
+            });
+        }
+    };
+
     return (
         <Fragment>
             <div className="main_container">
@@ -81,12 +118,42 @@ export function Chats() {
                             </div>
                             <div className="messages_body">
                                 {selectedChat.messages.map((message, index) => (
-                                    <div className="message" key={index}>
+                                    <div
+                                        className={`message ${index % 2 === 0 ? 'received' : 'sent'}`}
+                                        key={index}
+                                    >
                                         {message}
                                     </div>
                                 ))}
                             </div>
-                            <input type="text" />
+                            <div className="message_input_container">
+                                <input
+                                    type="file"
+                                    id="fileInput"
+                                    style={{ display: 'none' }}
+                                    onChange={handleFileUpload}
+                                />
+                                <p
+                                    className="file_upload_button"
+                                    onClick={() => document.getElementById('fileInput').click()}
+                                >
+                                    <IoLink />
+                                </p>
+                                <input
+                                    type="text"
+                                    className="message_input"
+                                    placeholder="Type a message"
+                                    value={inputMessage}
+                                    onChange={(e) => setInputMessage(e.target.value)}
+                                    onKeyDown={handleKeyDown}
+                                />
+                                <button
+                                    className="send_button"
+                                    onClick={() => handleKeyDown({ key: 'Enter' })}
+                                >
+                                    <IoMdSend />
+                                </button>
+                            </div>
                         </div>
                     ) : (
                         <p>Select a chat to view messages</p>

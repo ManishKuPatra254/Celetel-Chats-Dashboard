@@ -46,39 +46,6 @@ export function Navbar() {
                                 fontWeight: "600",
                             }}><BsFillChatSquareFill /> Chats</Link>
                         </ListItem>
-                        <ListItem sx={{
-                            backgroundColor: '#F6F5F2',
-                            marginBottom: '15px',
-                            padding: '10px',
-                            cursor: "pointer",
-                            '&:hover': {
-                                backgroundColor: '#E0E0E0'
-                            }
-                        }}>
-                            <Link to={'/messages'} onClick={handleCloseSidebar}
-                                style={{
-                                    textDecoration: 'none',
-                                    color: 'inherit',
-                                    fontWeight: "600",
-                                }}>Messages</Link>
-                        </ListItem>
-                        <ListItem sx={{
-                            backgroundColor: '#F6F5F2',
-                            marginBottom: '15px',
-                            padding: '10px',
-                            cursor: "pointer",
-                            '&:hover': {
-                                backgroundColor: '#E0E0E0'
-                            }
-                        }}>
-                            <Link to={'/contact'} onClick={handleCloseSidebar}
-                                style={{
-                                    textDecoration: 'none',
-                                    color: 'inherit',
-                                    fontWeight: "600",
-                                    cursor: "pointer"
-                                }}>Contact</Link>
-                        </ListItem>
                     </List>
                 </Drawer>
                 <div className="">
